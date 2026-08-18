@@ -25,9 +25,9 @@ static const uint32_t WIFI_FALLBACK_TIMEOUT_SECONDS = 180;
 static const uint32_t TIME_SYNC_INTERVAL_MS = 24UL * 60UL * 60UL * 1000UL;
 
 struct AppConfig {
-  String apiUrl = "http://example.com/api/leituras";
+  String apiUrl = "https://wheather-h5cvhjascmh7cnda.centralus-01.azurewebsites.net/api/InserirRegistro";
   String local = "Estacao 1";
-  String apiKey = "";
+  String apiKey = "Louvre";
   uint32_t readIntervalSeconds = 5;
   uint32_t sendIntervalMinutes = 30;
 };
@@ -137,7 +137,7 @@ String simplifiedTime(time_t now) {
   struct tm timeinfo;
   localtime_r(&now, &timeinfo);
   char buffer[6];
-  strftime(buffer, sizeof(buffer), "%H:%M", &timeinfo);
+  strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M", &timeinfo);
   return String(buffer);
 }
 

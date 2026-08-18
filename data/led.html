@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Padroes do LED - Estacao Clima</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:2rem;max-width:760px;color:#1f2933}
+    table{width:100%;border-collapse:collapse;margin-top:1rem}
+    th,td{border:1px solid #d9e2ec;padding:.7rem;text-align:left;vertical-align:top}
+    th{background:#f3f4f6}
+    nav a{display:inline-block;margin-right:1rem}
+    .ok{color:#047857;font-weight:700}.warn{color:#b45309;font-weight:700}.err{color:#b91c1c;font-weight:700}
+  </style>
+</head>
+<body>
+  <h1>Padroes do LED</h1>
+  <nav>
+    <a href="/">Configuracao</a>
+    <a href="/led.html">Padroes do LED</a>
+    <a href="/ota.html">Atualizacao OTA</a>
+  </nav>
+  <p>Versao do firmware: <strong>%FIRMWARE_VERSION%</strong></p>
+  <p>Estado atual: <strong>%LED_STATUS%</strong></p>
+  <table>
+    <thead><tr><th>Padrao</th><th>Significado</th></tr></thead>
+    <tbody>
+      <tr><td class="ok">Aceso fixo</td><td>Operacao normal: Wi-Fi conectado, hora sincronizada, sensores principais inicializados e sem falhas de envio pendentes.</td></tr>
+      <tr><td class="warn">1 piscada curta a cada 2 segundos</td><td>Ha falhas de envio armazenadas em <code>/failed.json</code>; o firmware tentara reenviar quando a conexao estiver disponivel.</td></tr>
+      <tr><td class="warn">2 piscadas curtas a cada 2 segundos</td><td>Sem Wi-Fi ou teste de conectividade falhou.</td></tr>
+      <tr><td class="warn">3 piscadas curtas a cada 2 segundos</td><td>Hora ainda nao sincronizada por NTP.</td></tr>
+      <tr><td class="err">4 piscadas curtas a cada 2 segundos</td><td>BMP085 nao encontrado na inicializacao.</td></tr>
+    </tbody>
+  </table>
+</body>
+</html>

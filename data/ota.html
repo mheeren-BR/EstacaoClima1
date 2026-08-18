@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Atualizacao OTA - Estacao Clima</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:2rem;max-width:760px;color:#1f2933}
+    input{display:block;margin-top:.75rem;padding:.6rem;border:1px solid #b8c2cc;border-radius:6px;width:100%;box-sizing:border-box}
+    button{margin-top:1rem;padding:.8rem 1rem;border:0;border-radius:6px;background:#2563eb;color:white;font-weight:700;cursor:pointer}
+    nav a{display:inline-block;margin-right:1rem}.warn{background:#fff7ed;border-left:4px solid #f97316;padding:1rem}
+  </style>
+</head>
+<body>
+  <h1>Atualizacao de Firmware OTA</h1>
+  <nav>
+    <a href="/">Configuracao</a>
+    <a href="/led.html">Padroes do LED</a>
+    <a href="/ota.html">Atualizacao OTA</a>
+  </nav>
+  <p>Versao atual: <strong>%FIRMWARE_VERSION%</strong></p>
+  <p class="warn">Envie um arquivo <code>.bin</code> gerado pelo PlatformIO. O dispositivo reiniciara automaticamente apos uma atualizacao concluida.</p>
+  <form method="POST" action="/update" enctype="multipart/form-data">
+    <label>Arquivo de firmware (.bin)
+      <input type="file" name="firmware" accept=".bin" required>
+    </label>
+    <button type="submit">Atualizar firmware</button>
+  </form>
+</body>
+</html>

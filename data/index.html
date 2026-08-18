@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Estacao Clima</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:2rem;max-width:760px;color:#1f2933}
+    label{display:block;margin-top:1rem;font-weight:700}
+    input{box-sizing:border-box;width:100%;padding:.65rem;margin-top:.25rem;border:1px solid #b8c2cc;border-radius:6px}
+    button{margin-top:1.25rem;padding:.8rem 1rem;border:0;border-radius:6px;background:#2563eb;color:white;font-weight:700;cursor:pointer}
+    pre{background:#f3f4f6;padding:1rem;border-radius:6px;overflow:auto}
+    nav a{display:inline-block;margin-right:1rem}
+    small{color:#52606d}
+  </style>
+</head>
+<body>
+  <h1>Estacao Meteorologica</h1>
+  <nav>
+    <a href="/">Configuracao</a>
+    <a href="/led.html">Padroes do LED</a>
+    <a href="/ota.html">Atualizacao OTA</a>
+    <a href="/config.json">config.json</a>
+  </nav>
+  <p>Acesso mDNS: <strong>http://%HOSTNAME%.local</strong></p>
+  <p>Versao do firmware: <strong>%FIRMWARE_VERSION%</strong></p>
+  <form method="POST" action="/save">
+    <label>URL base da API
+      <input name="apiUrl" value="%API_URL%" placeholder="https://exemplo.com/api/leituras">
+      <small>A chave sera anexada na URL como parametro <code>apiKey</code>.</small>
+    </label>
+    <label>API Key
+      <input name="apiKey" value="%API_KEY%" placeholder="chave da API">
+    </label>
+    <label>Local
+      <input name="local" value="%LOCAL%" placeholder="Ex.: Casa, Laboratorio, Telhado">
+    </label>
+    <label>Intervalo de leitura (segundos)
+      <input type="number" min="1" name="readIntervalSeconds" value="%READ_INTERVAL%">
+    </label>
+    <label>Intervalo de envio (minutos)
+      <input type="number" min="1" name="sendIntervalMinutes" value="%SEND_INTERVAL%">
+    </label>
+    <button type="submit">Salvar configuracao</button>
+  </form>
+  <h2>Ultima leitura</h2>
+  <pre>%LAST_READING%</pre>
+</body>
+</html>
